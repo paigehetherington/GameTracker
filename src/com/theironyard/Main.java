@@ -38,6 +38,9 @@ public class Main {
                 "/create-user",
                 ((request, response) ->  {
                     String name = request.queryParams("loginName");
+                    if (name == null) {
+                        throw new Exception("login name is null.");
+                    }
                     User user = users.get(name);
                     if (user == null) {
                         user = new User(name);
@@ -70,6 +73,9 @@ public class Main {
                     String gameGenre = request.queryParams("gameGenre");
                     String gamePlatform = request.queryParams("gamePlatform");
                     int gameYear = Integer.valueOf(request.queryParams("gameYear"));
+                    if (gameName == null || gameGenre == null || gamePlatform == null) {
+                        throw new Exception("didn't receive all query parameters.");
+                    }
                     Game game = new Game(gameName, gameGenre, gamePlatform, gameYear);
 
                     user.games.add(game); //legit user, adds to AL
