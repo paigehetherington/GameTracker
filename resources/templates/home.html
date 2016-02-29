@@ -33,9 +33,21 @@ Hello {{name}}!
     <input type="number" placeholder="Release Year" name="gameYear"/>
     <button type="submit">Submit</button>
 </form>
+
+
+
+
 <ol>
     {{#games}}
-    <li>{{name}} - {{genre}} - {{platform}} - {{releaseYear}}</li>
+    <li>{{name}} - {{genre}} - {{platform}} - {{releaseYear}}
+    <form action="/delete-game" method="get">
+        <input type="hidden" value="{{id}}" name="id">
+        <button type="submit">Delete</button>
+    </form>
+    <form>
+        <a href="/edit?editId={{id}}">Edit</a>
+    </form>
+    </li>
     {{/games}}
 </ol>
 </body>
