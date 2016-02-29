@@ -135,14 +135,15 @@ public class Main {
                 ((request2, response2) ->  {
                     User user = getUserFromSession(request2.session());
                     int gameId = Integer.valueOf(request2.queryParams("id"));
-                    Game edit = user.games.get(gameId);
+                    //Game edit = user.games.get(gameId);
                     String editGameName = request2.queryParams("gameName");
-                    edit.name = editGameName;
+                    //edit.name = editGameName;
                     String editGameGenre = request2.queryParams("gameGenre");
-                    edit.genre = editGameGenre;
+                    //edit.genre = editGameGenre;
                     String editGamePlatform = request2.queryParams("gamePlatform");
-                    edit.platform = editGamePlatform;
+                    //edit.platform = editGamePlatform;
                     int gameYear = Integer.valueOf(request2.queryParams("gameYear"));
+
                     Game game = new Game (gameId, editGameName, editGameGenre, editGamePlatform, gameYear);
                     updateGame(conn, game);
                     response2.redirect("/");
@@ -224,7 +225,7 @@ public class Main {
     }
 
     public static void updateGame(Connection conn, Game game) throws SQLException {
-        PreparedStatement stmt4 = conn.prepareStatement("UPDATE players SET name = ?, genre =?, platform = ?, releaseYear = ? WHERE id=?");
+        PreparedStatement stmt4 = conn.prepareStatement("UPDATE games SET name = ?, genre =?, platform = ?, releaseYear = ? WHERE id=?");
         stmt4.setString(1, game.name);
         stmt4.setString(2, game.genre);
         stmt4.setString(3, game.platform);
