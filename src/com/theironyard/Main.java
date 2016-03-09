@@ -196,11 +196,11 @@ public class Main {
             String platform = results.getString("platform");
             int releaseYear = results.getInt("releaseYear");
             Game game1 = new Game(id, name, genre, platform, releaseYear);
-            allGames.add(game1);
+            allGames.add(game1); //add to AL
 
 
         }
-        return allGames;
+        return allGames; //return AL
 
 
     }
@@ -216,7 +216,7 @@ public class Main {
             String platform = results.getString("platform");
             int releaseYear = results.getInt("releaseYear");
             Game game1 = new Game(id, name, genre, platform, releaseYear);
-            return game1;
+            return game1; //return one game
 
         } else {
             return null;
